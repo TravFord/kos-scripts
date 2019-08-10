@@ -5,27 +5,27 @@ declare function printAndLog
 { 
     parameter text.
     print text.
-    log Round(missionTime, 2) + text to log.txt.
+    log Round(missionTime, 2) + " " +  text to log.txt.
 }
 
 declare function LogIt
 {
     parameter text.
-    log Round(missionTime, 2) + text to log.txt.
+    log Round(missionTime, 2) + " " +  text to log.txt.
 }
 
 declare function DataDump
 {
     
     log "--------- " + time:clock + "---------" to "DataDumpFile.txt".  
-    log Round(missionTime, 2) + " Altitude: " + Ship:altitude to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " Mass: " + Ship:mass to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " Heading: " + Ship:heading to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " Q: " + Ship:q to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " + "Altitude: " + Ship:altitude to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "Mass: " + Ship:mass to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "Heading: " + Ship:heading to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "Q: " + Ship:q to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " " +  "Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
 }
 
 LogIt("-------------------------------------------------------").
@@ -169,8 +169,8 @@ until runmode = 0
     set MaxAlt to Max(MaxAlt, Ship:altitude).
     if time - LastReading > ReadingInterval and (MaxSpeed <> LastMaxSpeed or MaxAlt <> LastMaxAlt) 
     {
-        LogIt("MaxSpeed: " + MaxSpeed).
-        LogIt("MaxAltitude: " + MaxAlt).
+        LogIt("MaxSpeed: " + Round(MaxSpeed, 1)).
+        LogIt("MaxAltitude: " + Round(MaxAlt, 3)).
         set LastReading to time.
     } 
 }

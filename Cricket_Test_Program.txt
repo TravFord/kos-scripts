@@ -20,3 +20,17 @@ Apogee:  Above 40KM
 Max speed: Unknown
 Anomalies: Logging failure after chute arm due to program ending. Code loaded was obsolete.
 
+Launch 4
+Date: 1951-02-16
+Time: 14:23
+Apogee: 40288 m
+Max speed: 421 m/s
+Anomalies: None
+
+Launch 5
+Date: 1951-02-24
+Time: 15:04
+Apogee:
+Max speed:
+Anomalies: None
+
