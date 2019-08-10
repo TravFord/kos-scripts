@@ -1,0 +1,28 @@
+------- Grasshopper 1 ---------
+
+Launch 1
+Date: 1951-05-06
+Apogee: 282,736 m
+Max speed: 2,321 m/s 
+Engines: 
+Anomalies: Partial loss of thrust in one engine. TestFlight simulated failure. 
+Notes: No chutes were attached to this craft, as it was not expected to survive reentry. The craft was allowed to fall into the ocean an disintegrated at 5000m altitude. 
+
+------- Grasshopper-Aphid 1 ---------
+
+Launch 2
+Date: 1951-05-23
+Apogee: 206,225 m
+Max speed: 2,076 m/s 
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: 2nd stage did not ignite or separate. Weight of craft was miscalculated and too heavy to trigger 2nd stage ignition before 1st stage burnout. Trigger was set for when craft weighed .670 tons. Craft weighed .7 tons at 1st stage burnout.
+Notes: 
+
+Launch 3
+Date: 1951-05-23
+Apogee: 206,225 m
+Max speed: 2,076 m/s 
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: 2nd stage did not ignite or separate. Weight of craft was miscalculated and too heavy to trigger 2nd stage ignition before 1st stage burnout. Trigger was set for when craft weighed .670 tons. Craft weighed .7 tons at 1st stage burnout. Craft survived reentry and impacted the ocean at 1347 m/s.
+Notes: 
+

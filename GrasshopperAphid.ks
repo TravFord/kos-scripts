@@ -1,4 +1,4 @@
-// Cricket rocket 
+// Grasshopper rocket 
 
 
 declare function printAndLog 
@@ -87,37 +87,10 @@ when time - LastReading > ReadingInterval then
     return true.
 }
 // Science triggers
-when altitude > 5000 then {toggle ag1. return false.} // low atmo
-when altitude > 51000 then {toggle ag2. return false.} // high atmo
-when altitude > 141000 then {toggle ag3. return false.} // space
-when altitude < 20000 and verticalspeed < -10 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
-
-
-// when ship:verticalspeed < -1 and abortArmed = 1 then
-// {
-// 	printAndLog("descent detected during ascent phase. Aborting").
-// 	set runmode to 999. // Ship is falling. Abort.
-//     if altitude < 50000 { return true.}
-//     else {return false.}
-// }
-
-// when Ship:FACING:FOREVECTOR:Y < 0  and abortArmed = 1 and altitude < 5000 then 
-// {
-// 	printAndLog("Detected nose facing down during ascent phase. Aborting").
-// 	set runmode to 999. // Ship is pointed down. Abort.
-//     if altitude < 50000 { return true.}
-//     else {return false.}
-// }
-
-// when ship:verticalspeed < 0 and abortArmed = 1 and time > liftofftime + 2 then
-// {
-// 	printAndLog("descent or hover detected during ascent phase. Aborting").
-// 	set runmode to 999. // Ship is falling. Abort.
-//     if altitude < 50000 { return true.}
-//     else {return false.}
-// }
-
-
+// when altitude > 5000 then {toggle ag1. return false.} // low atmo
+// when altitude > 51000 then {toggle ag2. return false.} // high atmo
+// when altitude > 141000 then {toggle ag3. return false.} // space
+// when altitude < 20000 and verticalspeed < -10 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
  
 until runmode = 0
 {   
@@ -142,36 +115,48 @@ until runmode = 0
     {
        wait 0.8.
        stage. // Decouple Tiny Tim booster
-       set runmode to 700.
+       set runmode to 600.
+    }
+
+    else if runmode = 600
+    {
+        if ship:mass < 0.720 // Almost out of fuel in 1st stage
+        or ship:maxthrust < 20 // If we messed up the weight, try to salvage the mission by instantly igniting the 2nd stage at 1st stage cutoff to avoid ullage problems.
+        {
+            set runmode to 650.
+        }   
+    }
+
+    else if runmode = 650
+    {   
+        printAndLog("Igniting stage 2").
+        stage.
+        set runmode to 670.
+    }
+
+    else if runmode = 670
+    {
+        wait 1.
+        if ship:maxthrust < 20 // Main engines have cut off
+        stage. 
+        printAndLog("Main engine cutoff. Stage sep.").
+        set runmode to 700.
     }
 
     else if runmode = 700
     {
-        if ship:maxThrust = 0 
+        if ship:maxThrust < 1 // Second stage burnout
         or ship:verticalSpeed < 0 // Failsafe
         {
-            printAndLog("Engine cutoff").
+            
             set runmode to 800.
         }
     } 
     else if runmode = 800
     {
-       printAndLog("beginning coast phase.").
-       wait until ship:verticalSpeed < 0.
-       {
-            printAndLog("Negative vertical speed detected").
-            printAndLog("Vertical speed: " + ship:verticalSpeed).
-            wait 5.
-            set runmode to 900.
-       }
+       printAndLog("2nd stage engine cutoff. Beginning coast phase.").
+       set runmode to 950.
     } 
-
-    else if runmode = 900
-    {
-        printAndLog("Arming chutes").
-        toggle ag10. // Arm chutes
-        set runmode to 950.
-    }
 
     else if runmode = 950 
     {

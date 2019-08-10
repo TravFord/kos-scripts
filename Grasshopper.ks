@@ -1,4 +1,4 @@
-// Cricket rocket 
+// Grasshopper rocket 
 
 
 declare function printAndLog 
@@ -87,10 +87,10 @@ when time - LastReading > ReadingInterval then
     return true.
 }
 // Science triggers
-when altitude > 5000 then {toggle ag1. return false.} // low atmo
-when altitude > 51000 then {toggle ag2. return false.} // high atmo
-when altitude > 141000 then {toggle ag3. return false.} // space
-when altitude < 20000 and verticalspeed < -10 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
+// when altitude > 5000 then {toggle ag1. return false.} // low atmo
+// when altitude > 51000 then {toggle ag2. return false.} // high atmo
+// when altitude > 141000 then {toggle ag3. return false.} // space
+// when altitude < 20000 and verticalspeed < -10 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
 
 
 // when ship:verticalspeed < -1 and abortArmed = 1 then
@@ -168,8 +168,8 @@ until runmode = 0
 
     else if runmode = 900
     {
-        printAndLog("Arming chutes").
-        toggle ag10. // Arm chutes
+        // printAndLog("Arming chutes").
+        // toggle ag10. // Arm chutes
         set runmode to 950.
     }
 
