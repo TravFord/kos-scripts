@@ -1,8 +1,5 @@
 // Cricket rocket 
 
-// declare desiredApoapsis to 160000.
-// declare desiredHeading to 90.
-
 declare function printAndLog 
 { 
     parameter text.
@@ -33,12 +30,6 @@ declare function DataDump
 LogIt("-------------------------------------------------------").
 LogIt("------------------ [Beginning log] --------------------").
 LogIt("-------------------------------------------------------").
-
-// declare IsIgnited to 0.
-// declare IsLiftedOff to 0.
-// declare ignitionTime to time + 10000.
-// declare liftOffTime to time + 10000.
-// declare abortArmed to 0.
 
 declare runmode to 100.
 
@@ -108,8 +99,6 @@ until runmode = 0
         lock steering to up.
         wait 3.
         stage. //Start engine
-        // set ignitionTime to time.
-        // set abortArmed to 1.
         set runmode to 200.
         
     }
@@ -118,7 +107,6 @@ until runmode = 0
     {
         wait 1.
         stage. // Release clamp. //Fire Tiny Tim booster
-        // set liftOffTime to time. 
         set runmode to 300.
     }
 
@@ -144,7 +132,7 @@ until runmode = 0
     else if runmode = 900
     {
         printAndLog("Arming chutes").
-        stage. // Arm chutes
+        toggle ag10. // Arm chutes
         set runmode to 0.
     }
 
