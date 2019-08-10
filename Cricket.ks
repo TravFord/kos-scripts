@@ -98,7 +98,10 @@ when altitude < 49000 and verticalspeed < 0 then {toggle ag4. return false.} // 
 //     else {return false.}
 // }
 
-
+declare MaxAlt to 0.
+declare MaxSpeed to 0.
+declare LastReading to time.
+declare ReadingInterval to 1.
  
 until runmode = 0
 {   
@@ -153,4 +156,11 @@ until runmode = 0
     }
 
     wait 0.
+    set MaxSpeed to Max(maxspeed, Ship:surfaceSpeed).
+    set MaxAlt to Max(MaxAlt, Ship:altitude).
+    if time - LastReading > ReadingInterval  
+    {
+        LogIt("MaxSpeed: " + MaxSpeed).
+        LogIt("MaxAltitude: " + MaxAlt).
+    } 
 }
