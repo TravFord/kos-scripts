@@ -162,5 +162,6 @@ until runmode = 0
     {
         LogIt("MaxSpeed: " + MaxSpeed).
         LogIt("MaxAltitude: " + MaxAlt).
+        set LastReading to time.
     } 
 }
