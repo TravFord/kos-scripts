@@ -11,7 +11,7 @@ declare function printAndLog
 declare function LogIt
 {
     parameter text.
-    log Round(missionTime, 2) + " " +  text to log.txt.
+    log Round(missionTime, 2) + text to log.txt.
 }
 
 declare function DataDump
@@ -67,7 +67,26 @@ when lastaltitude > altitude + 5000 and verticalSpeed < 0 then
     return true.
 }    
 
+declare MaxAlt to 0.
+declare MaxSpeed to 0.
+declare LastMaxSpeed to 0.
+declare LastMaxAlt to 0.
+declare LastReading to time.
+declare ReadingInterval to 1.
 
+when time - LastReading > ReadingInterval then 
+{
+    set MaxSpeed to Max(maxspeed, Ship:airSpeed).
+    set MaxAlt to Max(MaxAlt, Ship:altitude).
+    if  MaxSpeed <> LastMaxSpeed or MaxAlt <> LastMaxAlt 
+    {
+        LogIt("MaxSpeed: " + Round(MaxSpeed, 1)).
+        LogIt("MaxAltitude: " + Round(MaxAlt, 3)).
+        set LastReading to time.
+    } 
+
+    return true.
+}
 // Science triggers
 when altitude > 5000 then {toggle ag1. return false.} // low atmo
 when altitude > 51000 then {toggle ag2. return false.} // high atmo
@@ -99,12 +118,7 @@ when altitude < 49000 and verticalspeed < -10 then {toggle ag4. return false.} /
 //     else {return false.}
 // }
 
-declare MaxAlt to 0.
-declare MaxSpeed to 0.
-declare LastMaxSpeed to 0.
-declare LastMaxAlt to 0.
-declare LastReading to time.
-declare ReadingInterval to 1.
+
  
 until runmode = 0
 {   
@@ -164,13 +178,4 @@ until runmode = 0
     }
 
     wait 0.
-    
-    set MaxSpeed to Max(maxspeed, Ship:airSpeed).
-    set MaxAlt to Max(MaxAlt, Ship:altitude).
-    if time - LastReading > ReadingInterval and (MaxSpeed <> LastMaxSpeed or MaxAlt <> LastMaxAlt) 
-    {
-        LogIt("MaxSpeed: " + Round(MaxSpeed, 1)).
-        LogIt("MaxAltitude: " + Round(MaxAlt, 3)).
-        set LastReading to time.
-    } 
 }
