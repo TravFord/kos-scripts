@@ -84,7 +84,6 @@ when time - LastReading > ReadingInterval then
         LogIt("MaxAltitude: " + Round(MaxAlt, 3)).
         set LastReading to time.
     } 
-
     return true.
 }
 // Science triggers
@@ -143,11 +142,19 @@ until runmode = 0
     {
        wait 0.8.
        stage. // Decouple Tiny Tim booster
-       set runmode to 800.
+       set runmode to 700.
     }
 
-   else if runmode = 800
-   {
+    else if runmode = 700
+    {
+        if ship:maxThrust = 0 or ship:verticalSpeed < 0
+        {
+            printAndLog("Engine cutoff").
+            set runmode to 800.
+        }
+    } 
+    else if runmode = 800
+    {
        printAndLog("beginning coast phase.").
        wait until ship:verticalSpeed < 0.
        {
@@ -156,7 +163,7 @@ until runmode = 0
             wait 5.
             set runmode to 900.
        }
-   } 
+    } 
 
     else if runmode = 900
     {
