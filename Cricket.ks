@@ -5,27 +5,27 @@ declare function printAndLog
 { 
     parameter text.
     print text.
-    log missionTime + text to log.txt.
+    log Round(missionTime, 2) + text to log.txt.
 }
 
 declare function LogIt
 {
     parameter text.
-    log missionTime + text to log.txt.
+    log Round(missionTime, 2) + text to log.txt.
 }
 
 declare function DataDump
 {
     
     log "--------- " + time:clock + "---------" to "DataDumpFile.txt".  
-    log missionTime + " Altitude: " + Ship:altitude to "DataDumpFile.txt".
-    log missionTime + " Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
-    log missionTime + " Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
-    log missionTime + " MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
-    log missionTime + " Mass: " + Ship:mass to "DataDumpFile.txt".
-    log missionTime + " Heading: " + Ship:heading to "DataDumpFile.txt".
-    log missionTime + " Q: " + Ship:q to "DataDumpFile.txt".
-    log missionTime + " Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Altitude: " + Ship:altitude to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Mass: " + Ship:mass to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Heading: " + Ship:heading to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Q: " + Ship:q to "DataDumpFile.txt".
+    log Round(missionTime, 2) + " Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
 }
 
 LogIt("-------------------------------------------------------").
@@ -101,6 +101,8 @@ when altitude < 49000 and verticalspeed < -10 then {toggle ag4. return false.} /
 
 declare MaxAlt to 0.
 declare MaxSpeed to 0.
+declare LastMaxSpeed to 0.
+declare LastMaxAlt to 0.
 declare LastReading to time.
 declare ReadingInterval to 1.
  
@@ -146,7 +148,7 @@ until runmode = 0
     {
         printAndLog("Arming chutes").
         toggle ag10. // Arm chutes
-        set runmode to 0.
+        set runmode to 950.
     }
 
     else if runmode = 950
@@ -162,9 +164,10 @@ until runmode = 0
     }
 
     wait 0.
+    
     set MaxSpeed to Max(maxspeed, Ship:airSpeed).
     set MaxAlt to Max(MaxAlt, Ship:altitude).
-    if time - LastReading > ReadingInterval  
+    if time - LastReading > ReadingInterval and (MaxSpeed <> LastMaxSpeed or MaxAlt <> LastMaxAlt) 
     {
         LogIt("MaxSpeed: " + MaxSpeed).
         LogIt("MaxAltitude: " + MaxAlt).
