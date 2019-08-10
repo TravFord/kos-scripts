@@ -1,4 +1,8 @@
 ----- Cricket program -----
+
+
+----- Cricket 2 ------
+
 Launch 1
 Date: 1951-01-16
 Time: 17:23
@@ -25,12 +29,43 @@ Date: 1951-02-16
 Time: 14:23
 Apogee: 40288 m
 Max speed: 421 m/s
-Anomalies: None
+Anomalies: Max speed is too low. Logging of max speed was disabled for part of the flight due to a code bug.
 
 Launch 5
 Date: 1951-02-24
 Time: 15:04
-Apogee:
-Max speed:
+Apogee: 31482 m
+Max speed: 603 m/s
+Anomalies: Engine shutdown at 44 seconds
+
+Launch 6
+Date: 1951-03-04
+Time: 17:39
+Apogee: 40582 m
+Max speed: 691 m/s 
 Anomalies: None
 
+Launch 7
+Date: 1951-03-13
+Time: 18:09
+Apogee: 30721 m
+Max speed: 693 m/s 
+Anomalies: None
+
+Launch 8
+Date: 1951-03-21
+Time: 18:01
+Apogee: 37049 m
+Max speed: 693 m/s 
+Anomalies: None
+
+
+------- Cricket 3 ---------
+
+Launch 9
+
+Date: 1951-04-20
+Time: 19:50
+Apogee: 199,319 m
+Max speed: 1,357 m/s 
+Anomalies: Chute did not decelerate rocket as fast as expected. Rocket did not reach 12m/s until about 40m above sea level. 

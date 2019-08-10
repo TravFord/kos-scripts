@@ -78,7 +78,7 @@ when time - LastReading > ReadingInterval then
 {
     set MaxSpeed to Max(maxspeed, Ship:airSpeed).
     set MaxAlt to Max(MaxAlt, Ship:altitude).
-    if  MaxSpeed <> LastMaxSpeed or MaxAlt <> LastMaxAlt 
+    if  round(MaxSpeed, 1) <> round(LastMaxSpeed, 1) or round(MaxAlt, 1) <> round(LastMaxAlt, 1) 
     {
         LogIt("MaxSpeed: " + Round(MaxSpeed, 1)).
         LogIt("MaxAltitude: " + Round(MaxAlt, 3)).
@@ -147,7 +147,8 @@ until runmode = 0
 
     else if runmode = 700
     {
-        if ship:maxThrust = 0 or ship:verticalSpeed < 0
+        if ship:maxThrust = 0 
+        or ship:verticalSpeed < 0 // Failsafe
         {
             printAndLog("Engine cutoff").
             set runmode to 800.
