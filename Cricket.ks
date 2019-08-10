@@ -1,5 +1,6 @@
 // Cricket rocket 
 
+
 declare function printAndLog 
 { 
     parameter text.
@@ -26,7 +27,6 @@ declare function DataDump
     log missionTime + " Q: " + Ship:q to "DataDumpFile.txt".
 }
 
-
 LogIt("-------------------------------------------------------").
 LogIt("------------------ [Beginning log] --------------------").
 LogIt("-------------------------------------------------------").
@@ -48,6 +48,8 @@ when time > dumptime + 0.5 then
     return true.
 }
 
+
+// Altitude logging/reporting
 declare lastAltitude to 0.
 
 when lastaltitude < altitude - 5000 and verticalSpeed > 0 then 
@@ -63,6 +65,13 @@ when lastaltitude > altitude + 5000 and verticalSpeed < 0 then
     printAndLog("Altitude " + lastaltitude/1000 + "km").
     return true.
 }    
+
+
+// Science triggers
+when altitude > 5000 then {toggle ag1. return false.} // low atmo
+when altitude > 51000 then {toggle ag2. return false.} // high atmo
+when altitude > 141000 then {toggle ag2. return false.} // space
+when altitude < 49000 and verticalspeed < 0 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
 
 
 // when ship:verticalspeed < -1 and abortArmed = 1 then
