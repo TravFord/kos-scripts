@@ -2,8 +2,14 @@
 Launch 1
 Date: 1951-01-16
 Time: 17:23
-Apogee: 
-Max speed:
-Anomalies:
+Apogee:  0
+Max speed: 0
+Anomalies: Program shutdown at startup due to improper variable use. Launch scrubbed. Science reading taken on launchpad. Possibly due to "VerticalSpeed < 0" logic that could trigger due to senser inaccuracies.
 
+Launch 2
+Date: 1951-01-30
+Time: 18:11
+Apogee:  Above 40KM
+Max speed: Unknown
+Anomalies: Logging failure after chute arm due to program ending. 
 
