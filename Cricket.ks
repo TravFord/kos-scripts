@@ -7,27 +7,28 @@ declare function printAndLog
 { 
     parameter text.
     print text.
-    log time + text to log.txt.
+    log missionTime + text to log.txt.
 }
 
 declare function LogIt
 {
     parameter text.
-    log time + text to log.txt.
+    log missionTime + text to log.txt.
 }
 
 declare function DataDump
 {
     
     log "--------- " + time:clock + "---------" to "DataDumpFile.txt".  
-    log time:clock + " Altitude: " + Ship:altitude to "DataDumpFile.txt".
-    log time:clock + " Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
-    log time:clock + " Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
-    log time:clock + " MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
-    log time:clock + " Mass: " + Ship:mass to "DataDumpFile.txt".
-    log time:clock + " Heading: " + Ship:heading to "DataDumpFile.txt".
-    log time:clock + " Q: " + Ship:q to "DataDumpFile.txt".
+    log missionTime + " Altitude: " + Ship:altitude to "DataDumpFile.txt".
+    log missionTime + " Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
+    log missionTime + " Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
+    log missionTime + " MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
+    log missionTime + " Mass: " + Ship:mass to "DataDumpFile.txt".
+    log missionTime + " Heading: " + Ship:heading to "DataDumpFile.txt".
+    log missionTime + " Q: " + Ship:q to "DataDumpFile.txt".
 }
+
 
 LogIt("-------------------------------------------------------").
 LogIt("------------------ [Beginning log] --------------------").
@@ -61,14 +62,14 @@ declare lastAltitude to 0.
 when lastaltitude < altitude - 5000 and verticalSpeed > 0 then 
 {
     set lastAltitude to lastaltitude + 5000.
-    printAndLog(lastaltitude).
+    printAndLog("Altitude " + lastaltitude/1000 + "km").
     return true.
 }
 
 when lastaltitude > altitude + 5000 and verticalSpeed < 0 then 
 {
     set lastAltitude to lastaltitude - 5000.
-    printAndLog(lastaltitude).
+    printAndLog("Altitude " + lastaltitude/1000 + "km").
     return true.
 }    
 
