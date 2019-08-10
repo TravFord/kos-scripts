@@ -25,6 +25,7 @@ declare function DataDump
     log missionTime + " Mass: " + Ship:mass to "DataDumpFile.txt".
     log missionTime + " Heading: " + Ship:heading to "DataDumpFile.txt".
     log missionTime + " Q: " + Ship:q to "DataDumpFile.txt".
+    log missionTime + " Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
 }
 
 LogIt("-------------------------------------------------------").
@@ -156,7 +157,7 @@ until runmode = 0
     }
 
     wait 0.
-    set MaxSpeed to Max(maxspeed, Ship:surfaceSpeed).
+    set MaxSpeed to Max(maxspeed, Ship:airSpeed).
     set MaxAlt to Max(MaxAlt, Ship:altitude).
     if time - LastReading > ReadingInterval  
     {
