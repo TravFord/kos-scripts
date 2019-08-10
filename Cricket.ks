@@ -4,28 +4,28 @@
 declare function printAndLog 
 { 
     parameter text.
-    print text.
-    log Round(missionTime, 2) + " " +  text to log.txt.
+    print Round(missionTime, 1) + " " + text.
+    log Round(missionTime, 1) + " " +  text to log.txt.
 }
 
 declare function LogIt
 {
     parameter text.
-    log Round(missionTime, 2) + text to log.txt.
+    log Round(missionTime, 1) + " " + text to log.txt.
 }
 
 declare function DataDump
 {
     
     log "--------- " + time:clock + "---------" to "DataDumpFile.txt".  
-    log Round(missionTime, 2) + " " + "Altitude: " + Ship:altitude to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "Orbital Velocity: " + Ship:velocity to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "Mass: " + Ship:mass to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "Heading: " + Ship:heading to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "Q: " + Ship:q to "DataDumpFile.txt".
-    log Round(missionTime, 2) + " " +  "Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " + "Altitude: " + Ship:altitude to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "Orbital Velocity: " + Ship:velocity:orbit:mag to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "Vertical Speed: " + Ship:verticalspeed to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "MaxThrust: " + Ship:maxthrust to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "Mass: " + Ship:mass to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "Heading: " + Ship:heading to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "Q: " + Ship:q to "DataDumpFile.txt".
+    log Round(missionTime, 1) + " " +  "Airspeed: " + Ship:Airspeed to "DataDumpFile.txt".
 }
 
 LogIt("-------------------------------------------------------").
@@ -42,7 +42,7 @@ on runmode
 
 declare dumpTime to time.
 
-when time > dumptime + 0.5 then 
+when time > dumptime + 1 then 
 {
     DataDump().
     set dumpTime to time.
@@ -78,7 +78,7 @@ when time - LastReading > ReadingInterval then
 {
     set MaxSpeed to Max(maxspeed, Ship:airSpeed).
     set MaxAlt to Max(MaxAlt, Ship:altitude).
-    if  round(MaxSpeed, 1) <> round(LastMaxSpeed, 1) or round(MaxAlt, 1) <> round(LastMaxAlt, 1) 
+    if  round(MaxSpeed, 0) <> round(LastMaxSpeed, 0) or round(MaxAlt, 0) <> round(LastMaxAlt, 0) 
     {
         LogIt("MaxSpeed: " + Round(MaxSpeed, 1)).
         LogIt("MaxAltitude: " + Round(MaxAlt, 3)).
@@ -90,7 +90,7 @@ when time - LastReading > ReadingInterval then
 when altitude > 5000 then {toggle ag1. return false.} // low atmo
 when altitude > 51000 then {toggle ag2. return false.} // high atmo
 when altitude > 141000 then {toggle ag3. return false.} // space
-when altitude < 49000 and verticalspeed < -10 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
+when altitude < 20000 and verticalspeed < -10 then {toggle ag4. return false.} // low atmo again. But, possibly in different biome.
 
 
 // when ship:verticalspeed < -1 and abortArmed = 1 then
