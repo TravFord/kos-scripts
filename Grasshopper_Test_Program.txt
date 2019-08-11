@@ -26,3 +26,45 @@ Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine
 Anomalies: 2nd stage did not ignite or separate. Weight of craft was miscalculated and too heavy to trigger 2nd stage ignition before 1st stage burnout. Trigger was set for when craft weighed .670 tons. Craft weighed .7 tons at 1st stage burnout. Craft survived reentry and impacted the ocean at 1347 m/s.
 Notes: 
 
+Launch 4
+Date: 1951-06-08
+Apogee: 11,110
+Max speed: 1,591 m/s
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: 2 1st stage engines suffered performance loss due to TestFlight simulated failure. As a result, craft trajectory became unstable and began tilting toward the horizon prematurely. Craft Reached an altitude of 11000 meters and broke up while flying horizontally at 1500+ m/s. 
+Notes: Due to above anomaly, 2nd stage ignited under very high dynamic pressure (100,000+!). 
+
+Launch 5
+Date: 1951-06-23
+Apogee: 54880 m
+Max speed: 3650 m/s
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: None
+Notes: Due to craft being aimed low, the 2nd stage broke up in the atmosphere at 54880 m. 
+
+Launch 5
+Date: 1951-07-08
+Apogee: 712,395 m
+Max speed: 3687 m/s
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: 
+Notes: Craft broke up on reentry at 35448 m
+
+Launch 6
+Date: 1951-07-24
+Apogee: 293,205 m
+Max speed: 4191 m/s
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: None
+Notes: Contact was lost at 75000 m while reentering
+
+Launch 7
+Date: 1951-08-07
+Apogee: 816,390 m
+Max speed: 4,065 m/s
+Engines: 1st stage: 5 XASR-1 Engines 2nd stage: 1 XASR-1 Engine 
+Anomalies: None
+Notes: Contact was lost at 34200 m while reentering
+
+
+

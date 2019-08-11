@@ -120,7 +120,7 @@ until runmode = 0
 
     else if runmode = 600
     {
-        if ship:mass < 0.720 // Almost out of fuel in 1st stage
+        if ship:mass < 1.089 // Almost out of fuel in 1st stage
         or ship:maxthrust < 20 // If we messed up the weight, try to salvage the mission by instantly igniting the 2nd stage at 1st stage cutoff to avoid ullage problems.
         {
             set runmode to 650.
